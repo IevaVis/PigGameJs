@@ -25,11 +25,12 @@ document.querySelector(".btn-roll").addEventListener('click', function (){
 document.querySelector(".btn-hold").addEventListener('click', function (){
 	scores[currentPlayer] += countScore;
 	document.querySelector('#score-' + currentPlayer).textContent = scores[currentPlayer];
-	if(scores[currentPlayer] >= 100) {
+	if(scores[currentPlayer] >= 20) {
 		alert("Player " + (currentPlayer + 1) + " is a winner")
 		document.querySelector(".btn-roll").style.visibility = "hidden";
 		document.querySelector(".btn-hold").style.visibility = "hidden";
 		document.querySelector(".dice").style.visibility = "hidden";
+		document.querySelector('.player-' + currentPlayer + "-panel").classList.remove("active");
 	} else {
 	nextPlayer();	
 }
