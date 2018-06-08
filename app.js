@@ -25,25 +25,31 @@ document.querySelector(".btn-roll").addEventListener('click', function (){
 document.querySelector(".btn-hold").addEventListener('click', function (){
 	scores[currentPlayer] += countScore;
 	document.querySelector('#score-' + currentPlayer).textContent = scores[currentPlayer];
+	if(scores[currentPlayer] >= 100) {
+		alert("Player " + (currentPlayer + 1) + " is a winner")
+		document.querySelector(".btn-roll").style.visibility = "hidden";
+		document.querySelector(".btn-hold").style.visibility = "hidden";
+		document.querySelector(".dice").style.visibility = "hidden";
+	} else {
 	nextPlayer();	
+}
+
 });
 
 function nextPlayer() {
 		currentPlayer === 0 ? currentPlayer = 1 : currentPlayer = 0;
 		countScore = 0;
-
 		document.getElementById("current-0").textContent = '0';
 		document.getElementById("current-1").textContent = '0';
 		document.querySelector('.player-0-panel').classList.toggle("active");
 		document.querySelector('.player-1-panel').classList.toggle("active");
-		
 		document.querySelector('.dice').style.display = "none";
 
-}
+};
 
 document.querySelector(".btn-new").addEventListener('click', function(){
 	location.reload();
-})
+});
 
 
 
