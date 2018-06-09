@@ -2,13 +2,21 @@ let scores = [0, 0];
 let countScore = 0;
 let currentPlayer = 0;
 let currentScoreArray = [];
+let winningScore = prompt("Choose your winning score!");
 document.querySelector(".dice").style.display = "none";
 document.getElementById("score-0").textContent = '0'
 document.getElementById("score-1").textContent = '0'
 document.getElementById("current-0").textContent = '0'
 document.getElementById("current-1").textContent = '0'
 
+chooseWinningScore();
 
+function chooseWinningScore() {
+	document.querySelector("#winning-score").textContent = winningScore
+	if (isNaN(winningScore) || winningScore == null) {
+		document.querySelector("#winning-score").textContent = 100;
+	}
+} 
 
 document.querySelector(".btn-roll").addEventListener('click', function (){
 	let dice = Math.floor(Math.random() * 6) + 1;
@@ -36,7 +44,7 @@ document.querySelector(".btn-roll").addEventListener('click', function (){
 document.querySelector(".btn-hold").addEventListener('click', function (){
 	scores[currentPlayer] += countScore;
 	document.querySelector('#score-' + currentPlayer).textContent = scores[currentPlayer];
-	if(scores[currentPlayer] >= 50) {
+	if(scores[currentPlayer] >= winningScore) {
 		alert("Player " + (currentPlayer + 1) + " is a winner")
 		document.querySelector(".btn-roll").style.visibility = "hidden";
 		document.querySelector(".btn-hold").style.visibility = "hidden";

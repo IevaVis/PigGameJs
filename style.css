@@ -32,6 +32,13 @@ body {
 	overflow: hidden;
 }
 
+.winning-score {
+	left: 44%;
+	position: absolute;
+	top: 85px;
+	font-family: Lato;
+}
+
 .player-0-panel,
 .player-1-panel {
 	width: 50%;
